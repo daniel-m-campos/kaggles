@@ -1,7 +1,8 @@
-**/input/
-**/input
+**/input/*.csv
+**/input/*.txt
 *.ipynb_checkpoints/
 *.pyc
 .venv/
 .python-version
 submission.csv
+.vscode/
