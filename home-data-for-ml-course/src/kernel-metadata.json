@@ -1,0 +1,16 @@
+{
+  "id": "danielmcampos/house-price-utils",
+  "title": "House Price Utils",
+  "code_file": "house_price_utils.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": "false",
+  "enable_gpu": "false",
+  "enable_tpu": "false",
+  "enable_internet": "true",
+  "dataset_sources": [],
+  "competition_sources": [
+  ],
+  "kernel_sources": [],
+  "model_sources": []
+}
