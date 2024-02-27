@@ -1,0 +1,19 @@
+{
+  "id": "danielmcampos/house-prices-2-cv-and-baseline-model",
+  "id_no": 51593935,
+  "title": "House Prices: 2. CV and Baseline Model ",
+  "code_file": "house-prices-2-cv-and-baseline-model.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "home-data-for-ml-course"
+  ],
+  "model_sources": []
+}

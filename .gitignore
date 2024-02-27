@@ -1,0 +1,7 @@
+**/input/
+**/input
+*.ipynb_checkpoints/
+*.pyc
+.venv/
+.python-version
+submission.csv

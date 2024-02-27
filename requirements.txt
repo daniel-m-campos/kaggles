@@ -1,0 +1,15 @@
+black
+flake8
+ipykernel
+isort
+kaggle
+matplotlib
+nbstripout
+numpy
+pandas
+pandas[plot, output-formatting]
+pre_commit
+scikit-learn
+scipy
+seaborn
+statsmodels
