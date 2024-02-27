@@ -1,6 +1,5 @@
 #!/bin/bash -e
 
-# check for competition name input
 if [ -z "$1" ]; then
     echo "Usage: $0 <competition_name>"
     exit 1

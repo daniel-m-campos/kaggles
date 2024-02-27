@@ -10,10 +10,11 @@ find . -type d -name kernels | while read -r d; do
     echo Found competition dir "$dir_name"
     cd $dir_name/kernels || exit
     if [ -d input ]; then
-        echo Removing "$dir_name" input directory
-        rm -rf input
+        echo Removing "$dir_name" data files
+        rm input/*{.csv,.zip,.gz,.txt}
+    else
+        mkdir input
     fi
-    mkdir input
     kaggle competitions download -c "$dir_name" -p input
     unzip -o input/*.zip -d input
     rm -rf input/*{.zip,gz}
