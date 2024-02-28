@@ -6,3 +6,4 @@
 .python-version
 submission.csv
 .vscode/
+.env
