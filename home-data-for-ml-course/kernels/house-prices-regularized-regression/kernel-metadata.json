@@ -1,0 +1,20 @@
+{
+  "id": "danielmcampos/house-prices-regularized-regression",
+  "title": "House Prices: Regularized Regression",
+  "code_file": "house-prices-regularized-regression.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [
+    "danielmcampos/house-price-utils"
+  ],
+  "competition_sources": [
+    "home-data-for-ml-course"
+  ],
+  "model_sources": []
+}
