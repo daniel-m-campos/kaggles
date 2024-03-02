@@ -1,0 +1,20 @@
+{
+  "id": "danielmcampos/house-prices-5-interactions",
+  "title": "House Prices 5: Interactions",
+  "code_file": "house-prices-5-interactions.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [
+    "danielmcampos/house-price-utils"
+  ],
+  "competition_sources": [
+    "home-data-for-ml-course"
+  ],
+  "model_sources": []
+}
