@@ -10,6 +10,7 @@ import pandas as pd
 from matplotlib import pyplot as plt
 from sklearn.feature_selection import mutual_info_regression
 from sklearn.metrics import PredictionErrorDisplay, mean_absolute_error
+from sklearn.model_selection import StratifiedKFold
 from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder
 
 
@@ -198,3 +199,13 @@ def setup_notebook():
     plt.style.use("ggplot")
     pd.options.display.max_columns = None
     pd.options.display.max_rows = 30
+
+
+class QuantileKFold(StratifiedKFold):
+    def __init__(self, n_splits=5, shuffle=False, n_quantiles=4, random_state=None):
+        super().__init__(n_splits, shuffle=shuffle, random_state=random_state)
+        self.n_quantiles = n_quantiles
+
+    def split(self, X, y, groups=None):
+        quantiles = pd.qcut(y, self.n_quantiles, labels=False)
+        return super().split(X, quantiles, groups)
