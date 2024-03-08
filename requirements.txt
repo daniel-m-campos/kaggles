@@ -9,7 +9,9 @@ numpy
 pandas
 pandas[plot, output-formatting]
 pre_commit
+pytest
 scikit-learn
 scipy
 seaborn
 statsmodels
+xgboost
