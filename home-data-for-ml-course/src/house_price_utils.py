@@ -154,6 +154,13 @@ def load_data():
     )
 
 
+def extract_target(data, target):
+    data = data[sorted(data)]
+    X = data.drop(columns=[target])
+    y = data[target]
+    return X, y
+
+
 def plot_variance(pca):
     """
     Plots the explained variance and cumulative variance of the principal components.
@@ -209,3 +216,14 @@ class QuantileKFold(StratifiedKFold):
     def split(self, X, y, groups=None):
         quantiles = pd.qcut(y, self.n_quantiles, labels=False)
         return super().split(X, quantiles, groups)
+
+
+def summary(scores):
+    return (
+        pd.DataFrame(scores)
+        .T.assign(
+            mean=lambda df: df.mean(axis=1),
+            std=lambda df: df.std(axis=1),
+        )
+        .sort_values("mean")
+    )

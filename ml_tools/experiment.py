@@ -4,6 +4,7 @@ from typing import Callable, Union
 
 import joblib
 import numpy as np
+import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.model_selection import BaseCrossValidator
 
@@ -90,12 +91,16 @@ class RegressionExperiment:
         Returns:
             self: The fitted experiment model.
         """
+        if isinstance(X, np.ndarray):
+            X = pd.DataFrame(X)
+        if isinstance(y, pd.Series):
+            y = y.values
 
         self.scores = []
         self.models = []
         self.oof_predictions = np.zeros_like(y)
         for train_index, test_index in self.cv.split(X, y):
-            X_train, X_test = X[train_index], X[test_index]
+            X_train, X_test = X.iloc[train_index], X.iloc[test_index]
             y_train, y_test = y[train_index], y[test_index]
             X_train_preprocessed = self.preprocessor.fit_transform(X_train)
             self.estimator.fit(X_train_preprocessed, y_train)
@@ -143,7 +148,7 @@ class RegressionExperiment:
         if filename is None:
             name = self.name.replace(" ", "_")
             previous_saves = glob.glob(f"{name}*", root_dir=root_dir)
-            filename = name + str(len(previous_saves)) + ".pkl"
+            filename = name + f"_{len(previous_saves)}" + ".pkl"
         file_path = Path(root_dir) / filename
         joblib.dump(self, file_path)
         return file_path

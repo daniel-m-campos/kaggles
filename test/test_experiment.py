@@ -7,7 +7,7 @@ from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import KFold
 from sklearn.preprocessing import StandardScaler
 
-from src.experiment import RegressionExperiment
+from ml_tools.experiment import RegressionExperiment
 
 
 @pytest.fixture
