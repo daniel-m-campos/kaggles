@@ -9,7 +9,11 @@ import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 from sklearn.feature_selection import mutual_info_regression
-from sklearn.metrics import PredictionErrorDisplay, mean_absolute_error
+from sklearn.metrics import (
+    PredictionErrorDisplay,
+    mean_absolute_error,
+    mean_squared_error,
+)
 from sklearn.model_selection import StratifiedKFold
 from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder
 
@@ -190,14 +194,14 @@ def plot_variance(pca):
     return fig
 
 
-def evaluate(model, X, y):
-    return mean_absolute_error(y, model.predict(X))
+def evaluate(model, X, y, metric):
+    return metric(y, model.predict(X))
 
 
-def report(model, X_train, y_train, X_val, y_val):
+def report(model, X_train, y_train, X_val, y_val, metric=mean_absolute_error):
     print(
-        f"Train MAE = {evaluate(model, X_train, y_train):.2f}",
-        f"Test MAE = {evaluate(model, X_val, y_val):.2f}",
+        f"Train Score = {evaluate(model, X_train, y_train, metric):.4f}",
+        f"Test Score = {evaluate(model, X_val, y_val, metric):.4f}",
         sep="\n",
     )
 
@@ -227,3 +231,7 @@ def summary(scores):
         )
         .sort_values("mean")
     )
+
+
+def rmse(y_true, y_pred):
+    return np.sqrt(mean_squared_error(y_true, y_pred))

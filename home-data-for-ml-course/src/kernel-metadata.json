@@ -9,8 +9,7 @@
   "enable_tpu": "false",
   "enable_internet": "true",
   "dataset_sources": [],
-  "competition_sources": [
-  ],
+  "competition_sources": [],
   "kernel_sources": [],
   "model_sources": []
 }
