@@ -1,8 +1,10 @@
 black
+catboost
 flake8
 ipykernel
 isort
 kaggle
+lightgbm
 matplotlib
 nbstripout
 numpy
