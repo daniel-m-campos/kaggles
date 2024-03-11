@@ -8,3 +8,4 @@ submission.csv
 .vscode/
 .env
 *.pkl
+catboost_info/
