@@ -19,16 +19,22 @@ def regression_data():
 def experiment():
     return RegressionExperiment(
         "Test Pipeline",
-        KFold(n_splits=5),
         StandardScaler(),
         LinearRegression(),
         mean_squared_error,
+        cv=KFold(n_splits=5),
     )
 
 
 @pytest.fixture
 def model(regression_data, experiment):
-    return experiment.fit(*regression_data)
+    return experiment.cross_validate(*regression_data)
+
+
+def test_random_state_set_on_all_objects(experiment):
+    for obj in (experiment.cv, experiment.preprocessor, experiment.estimator):
+        if hasattr(obj, "random_state"):
+            assert obj.random_state == experiment.random_state
 
 
 def test_oof_prediction(regression_data, model):

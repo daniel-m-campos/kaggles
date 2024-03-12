@@ -230,6 +230,7 @@ def summary(scores):
             std=lambda df: df.std(axis=1),
         )
         .sort_values("mean")
+        .rename_axis("model_file", axis=0)
     )
 
 

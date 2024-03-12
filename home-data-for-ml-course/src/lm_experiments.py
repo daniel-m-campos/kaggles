@@ -4,7 +4,6 @@ import numpy as np
 from sklearn import linear_model, metrics
 from sklearn.compose import TransformedTargetRegressor, make_column_transformer
 from sklearn.impute import SimpleImputer
-from sklearn.model_selection import KFold
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler
 
@@ -16,7 +15,7 @@ data, data_test = hpu.load_data()
 X, y = hpu.extract_target(data, "SalePrice")
 
 # %%
-preprocessor1 = make_column_transformer(
+preprocessor = make_column_transformer(
     (
         make_pipeline(SimpleImputer(strategy="mean"), StandardScaler()),
         column_selectors.continuous_selector,
@@ -41,14 +40,16 @@ preprocessor1 = make_column_transformer(
 linear_models = [
     linear_model.LinearRegression(),
     linear_model.ElasticNetCV(),
+    linear_model.LassoCV(),
+    linear_model.RidgeCV(),
 ]
 
 # %%
 for model in linear_models:
     RegressionExperiment(
         model.__class__.__name__,
-        KFold(n_splits=5),
-        preprocessor1,
+        preprocessor,
         TransformedTargetRegressor(regressor=model, func=np.log, inverse_func=np.exp),
         metrics.mean_absolute_error,
-    ).fit(X, y).save(root_dir="../models")
+        num_y_quantiles=5,
+    ).cross_validate(X, y).save(root_dir="../models")
