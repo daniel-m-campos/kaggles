@@ -1,6 +1,6 @@
 {
   "id": "danielmcampos/house-prices-7-gradient-boosting",
-  "title": "House Prices 7: Gradient Boosting",
+  "title": "House Prices 7: Gradient Boosting and Hyperparameter Tuning",
   "code_file": "house-prices-7-gradient-boosting.ipynb",
   "language": "python",
   "kernel_type": "notebook",
@@ -14,7 +14,6 @@
     "danielmcampos/house-price-utils"
   ],
   "competition_sources": [
-    "home-data-for-ml-course",
     "house-prices-advanced-regression-techniques"
   ],
   "model_sources": []
